@@ -1,8 +1,9 @@
 import express from "express";
+import { Article } from "./interfaces/Article";
 
 const app = express.Router();
 
-const articles = [
+const articles: Article[] = [
   { id: "a1", name: "Tournevis", price: 2.99, qty: 120 },
   { id: "a2", name: "Marteau", price: 5, qty: 45 },
 ];
