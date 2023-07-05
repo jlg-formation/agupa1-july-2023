@@ -1,1 +1,42 @@
-<p>stock works!</p>
+<main>
+  <h1>Liste des articles</h1>
+  <div class="content">
+    <nav>
+      <button>Rafraîchir</button>
+      <a routerLink="add" class="button">Ajouter</a>
+      <button>Supprimer</button>
+    </nav>
+    <div class="error"></div>
+    <table>
+      <thead>
+        <tr>
+          <th class="name">Nom</th>
+          <th class="price">Prix</th>
+          <th class="qty">Quantité</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="name">Tournevis</td>
+          <td class="price">1.99 €</td>
+          <td class="qty">123</td>
+        </tr>
+        <tr>
+          <td class="name">Rateau</td>
+          <td class="price">5.00 €</td>
+          <td class="qty">25</td>
+        </tr>
+        <tr>
+          <td class="name">Visseuse</td>
+          <td class="price">25.00 €</td>
+          <td class="qty">23</td>
+        </tr>
+        <tr>
+          <td class="name">Marteau</td>
+          <td class="price">2.50 €</td>
+          <td class="qty">10</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
