@@ -1,6 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 @use "../node_modules/normalize.css/normalize.css";
+@use "../node_modules/sanitize.css/sanitize.css";
 
 body {
   font-family: sans-serif;
+}
+
+main {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: 0.5em;
+
+  width: 100%;
+  max-width: 100ch;
+  margin: 0 auto;
+
+  p {
+    align-self: flex-start;
+  }
 }
