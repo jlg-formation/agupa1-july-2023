@@ -1,0 +1,23 @@
+form {
+  display: flex;
+  flex-flow: column;
+  gap: 0.5em;
+
+  width: 100%;
+  max-width: 25em;
+
+  label {
+    display: flex;
+    flex-flow: column;
+
+    input {
+      border: 0.1em solid #aaa;
+      border-radius: 0.3em;
+      padding: 0.5em 1em;
+    }
+  }
+
+  div.error {
+    height: 3em;
+  }
+}
