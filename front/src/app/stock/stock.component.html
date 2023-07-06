@@ -2,8 +2,11 @@
   <h1>Liste des articles</h1>
   <div class="content">
     <nav>
-      <button title="Rafraîchir">
-        <fa-icon [icon]="faRotateRight"></fa-icon>
+      <button title="Rafraîchir" (click)="refresh()" [disabled]="isRefreshing">
+        <fa-icon
+          [icon]="isRefreshing ? faCircleNotch : faRotateRight"
+          [spin]="isRefreshing"
+        ></fa-icon>
       </button>
       <a routerLink="add" class="button" title="Ajouter">
         <fa-icon [icon]="faPlus"></fa-icon>

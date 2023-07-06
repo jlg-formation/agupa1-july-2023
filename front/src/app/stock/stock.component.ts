@@ -15,19 +15,41 @@ import { catchError, delay, finalize, of, switchMap, tap } from 'rxjs';
   styleUrls: ['./stock.component.scss'],
 })
 export class StockComponent {
+  errorMsg = '';
+  faCircleNotch = faCircleNotch;
   faPlus = faPlus;
   faRotateRight = faRotateRight;
   faTrashCan = faTrashCan;
-  faCircleNotch = faCircleNotch;
-  selectedArticles = new Set<Article>();
-
-  errorMsg = '';
   isRemoving = false;
+  isRefreshing = false;
+  selectedArticles = new Set<Article>();
 
   constructor(protected readonly articleService: ArticleService) {}
 
   getArticleId(index: number, a: Article) {
     return a.id;
+  }
+
+  refresh() {
+    console.log('refresh');
+    of(undefined)
+      .pipe(
+        tap(() => {
+          this.errorMsg = '';
+          this.isRefreshing = true;
+        }),
+        delay(3000),
+        switchMap(() => this.articleService.refresh()),
+        catchError((err) => {
+          console.log('err: ', err);
+          this.errorMsg = 'Erreur Technique';
+          return of(undefined);
+        }),
+        finalize(() => {
+          this.isRefreshing = false;
+        })
+      )
+      .subscribe();
   }
 
   remove() {
