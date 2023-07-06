@@ -13,13 +13,23 @@ import { ArticleService } from '../services/article.service';
   styleUrls: ['./stock.component.scss'],
 })
 export class StockComponent {
-  faRotateRight = faRotateRight;
   faPlus = faPlus;
+  faRotateRight = faRotateRight;
   faTrashCan = faTrashCan;
+
+  selectedArticles = new Set<Article>();
 
   constructor(protected readonly articleService: ArticleService) {}
 
   getArticleId(index: number, a: Article) {
     return a.id;
+  }
+
+  select(a: Article) {
+    if (this.selectedArticles.has(a)) {
+      this.selectedArticles.delete(a);
+      return;
+    }
+    this.selectedArticles.add(a);
   }
 }
