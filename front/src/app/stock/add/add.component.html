@@ -16,7 +16,7 @@
     <div class="error">
       {{ errorMsg }}
     </div>
-    <button type="submit" class="primary" [disabled]="f.invalid">
+    <button type="submit" class="primary" [disabled]="f.invalid || isAdding">
       <fa-icon [icon]="faPlus"></fa-icon>
       <span>Ajouter</span>
     </button>

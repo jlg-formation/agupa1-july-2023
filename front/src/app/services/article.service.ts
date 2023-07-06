@@ -25,6 +25,7 @@ export class ArticleService {
   }
 
   refresh(): Observable<void> {
+    // throw new Error('rrr');
     return of(undefined);
   }
 }
