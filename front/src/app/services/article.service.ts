@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Article, NewArticle } from '../interfaces/article';
 import { BehaviorSubject, Observable, of, tap } from 'rxjs';
 
-const articles: Article[] = [
+let articles: Article[] = [
   { id: 'a1', name: 'Tournevis', price: 2.99, qty: 123 },
   { id: 'a2', name: 'Pelle', price: 1.5, qty: 14 },
 ];
@@ -20,6 +20,7 @@ export class ArticleService {
       tap(() => {
         const article = { ...newArticle, id: crypto.randomUUID() };
         articles.push(article);
+        this.articles$.next(articles);
       })
     );
   }
@@ -27,5 +28,14 @@ export class ArticleService {
   refresh(): Observable<void> {
     // throw new Error('rrr');
     return of(undefined);
+  }
+
+  remove(ids: string[]): any {
+    return of(undefined).pipe(
+      tap(() => {
+        articles = articles.filter((a) => !ids.includes(a.id));
+        this.articles$.next(articles);
+      })
+    );
   }
 }
