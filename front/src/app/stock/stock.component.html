@@ -12,8 +12,12 @@
         title="Supprimer"
         [hidden]="selectedArticles.size === 0"
         (click)="remove()"
+        [disabled]="isRemoving"
       >
-        <fa-icon [icon]="faTrashCan"></fa-icon>
+        <fa-icon
+          [icon]="isRemoving ? faCircleNotch : faTrashCan"
+          [spin]="isRemoving"
+        ></fa-icon>
       </button>
     </nav>
     <div class="error"></div>
