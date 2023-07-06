@@ -22,7 +22,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let a of articles; trackBy: getArticleId">
+        <tr *ngFor="let a of articleService.articles; trackBy: getArticleId">
           <td class="name">{{ a.name }}</td>
           <td class="price">{{ a.price }} €</td>
           <td class="qty">{{ a.qty }}</td>
