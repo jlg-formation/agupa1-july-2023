@@ -3,13 +3,20 @@ const { Observable } = require("rxjs");
 const o = new Observable((subscriber) => {
   subscriber.next(123);
   subscriber.next(456);
-  setTimeout(() => {
+  const timer = setTimeout(() => {
+    console.log("inside timeout");
     subscriber.next("coucou");
+    // subscriber.error(new Error("oups"));
     subscriber.complete();
   }, 1000);
+
+  return () => {
+    console.log("housekeep");
+    clearTimeout(timer);
+  };
 });
 
-o.subscribe({
+const s = o.subscribe({
   next: (data) => {
     console.log("data: ", data);
   },
@@ -20,3 +27,7 @@ o.subscribe({
     console.log("complete");
   },
 });
+
+setTimeout(() => {
+  s.unsubscribe();
+}, 500);
