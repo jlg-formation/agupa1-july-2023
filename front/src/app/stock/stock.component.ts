@@ -6,7 +6,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { Article } from '../interfaces/article';
 import { ArticleService } from '../services/article.service';
-import { of, switchMap } from 'rxjs';
+import { of, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-stock',
@@ -33,7 +33,10 @@ export class StockComponent {
           const ids = [...this.selectedArticles].map((a) => a.id);
           return this.articleService.remove(ids);
         }),
-        switchMap(() => this.articleService.refresh())
+        switchMap(() => this.articleService.refresh()),
+        tap(() => {
+          this.selectedArticles.clear();
+        })
       )
       .subscribe();
   }
