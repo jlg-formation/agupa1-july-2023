@@ -35,6 +35,14 @@
         </tr>
       </thead>
       <tbody>
+        <tr [hidden]="(articleService.articles$ | async) !== undefined">
+          <td colspan="3">
+            <div class="loading">
+              <fa-icon [icon]="faCircleNotch" [spin]="true"></fa-icon>
+              <span>Chargement...</span>
+            </div>
+          </td>
+        </tr>
         <tr
           *ngFor="
             let a of articleService.articles$ | async;
