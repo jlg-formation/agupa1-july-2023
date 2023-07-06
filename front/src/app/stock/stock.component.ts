@@ -16,13 +16,16 @@ export class StockComponent {
   faPlus = faPlus;
   faRotateRight = faRotateRight;
   faTrashCan = faTrashCan;
-
   selectedArticles = new Set<Article>();
 
   constructor(protected readonly articleService: ArticleService) {}
 
   getArticleId(index: number, a: Article) {
     return a.id;
+  }
+
+  remove() {
+    console.log('remove');
   }
 
   select(a: Article) {

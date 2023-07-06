@@ -8,7 +8,11 @@
       <a routerLink="add" class="button" title="Ajouter">
         <fa-icon [icon]="faPlus"></fa-icon>
       </a>
-      <button title="Supprimer" *ngIf="selectedArticles.size > 0">
+      <button
+        title="Supprimer"
+        [hidden]="selectedArticles.size === 0"
+        (click)="remove()"
+      >
         <fa-icon [icon]="faTrashCan"></fa-icon>
       </button>
     </nav>
