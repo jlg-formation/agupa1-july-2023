@@ -1,11 +1,17 @@
 div.content {
   display: flex;
   flex-flow: column;
-  gap: 0.5em;
 
   nav {
     display: flex;
     gap: 0.3em;
+  }
+
+  div.error {
+    font-weight: bold;
+    height: 2em;
+    display: flex;
+    align-items: center;
   }
 
   table {
