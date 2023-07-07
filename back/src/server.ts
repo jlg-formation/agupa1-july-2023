@@ -6,7 +6,7 @@ import { api } from "./api";
 
 const app = express();
 const port = 3000;
-const publicDir = ".";
+const publicDir = "../front/dist/front";
 
 const logger = (req: Request, res: Response, next: NextFunction) => {
   console.log("req: ", req.method, req.url);
@@ -19,6 +19,10 @@ app.use("/api", api);
 
 app.use(express.static(publicDir));
 app.use(serveIndex(publicDir, { icons: true }));
+
+app.get("/**", (req, res) => {
+  res.sendFile("index.html", { root: publicDir });
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
