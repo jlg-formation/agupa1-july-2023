@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   faCircleNotch,
   faPlus,
@@ -14,7 +14,7 @@ import { catchError, delay, finalize, of, switchMap, tap } from 'rxjs';
   templateUrl: './stock.component.html',
   styleUrls: ['./stock.component.scss'],
 })
-export class StockComponent {
+export class StockComponent implements OnInit {
   errorMsg = '';
   faCircleNotch = faCircleNotch;
   faPlus = faPlus;
@@ -24,12 +24,14 @@ export class StockComponent {
   isRefreshing = false;
   selectedArticles = new Set<Article>();
 
-  constructor(protected readonly articleService: ArticleService) {
-    if (articleService.articles$.value === undefined) {
+  constructor(protected readonly articleService: ArticleService) {}
+
+  ngOnInit(): void {
+    if (this.articleService.articles$.value === undefined) {
       of(undefined)
         .pipe(
           delay(300),
-          switchMap(() => articleService.refresh())
+          switchMap(() => this.articleService.refresh())
         )
         .subscribe();
     }
