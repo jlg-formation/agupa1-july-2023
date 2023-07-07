@@ -4,7 +4,7 @@ import { Article, NewArticle } from "./interfaces/Article";
 
 const app = express.Router();
 
-const articles: Article[] = [
+let articles: Article[] = [
   { id: "a1", name: "Tournevis", price: 2.99, qty: 120 },
   { id: "a2", name: "Marteau", price: 5, qty: 45 },
 ];
@@ -12,6 +12,7 @@ const articles: Article[] = [
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Headers", "*");
+  res.setHeader("Access-Control-Allow-Methods", "*");
   next();
 });
 
@@ -26,6 +27,12 @@ app.post("/articles", (req, res) => {
   const article = { ...newArticle, id: crypto.randomUUID() };
   articles.push(article);
   res.status(201).end();
+});
+
+app.delete("/articles", (req, res) => {
+  const ids: string[] = req.body;
+  articles = articles.filter((a) => !ids.includes(a.id));
+  res.status(204).end();
 });
 
 export const api = app;

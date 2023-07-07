@@ -34,7 +34,7 @@ export class ArticleService {
     );
   }
 
-  remove(ids: string[]): any {
+  remove(ids: string[]): Observable<void> {
     return of(undefined).pipe(
       tap(() => {
         articles = articles.filter((a) => !ids.includes(a.id));
