@@ -40,7 +40,7 @@ export class AddComponent {
           this.isAdding = true;
           this.errorMsg = '';
         }),
-        delay(2000),
+        delay(300),
         switchMap(() => this.articleService.add(newArticle)),
         switchMap(() => this.articleService.refresh()),
         switchMap(() => this.router.navigateByUrl('/stock')),

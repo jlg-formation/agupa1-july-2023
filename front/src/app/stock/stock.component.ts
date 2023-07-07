@@ -28,7 +28,7 @@ export class StockComponent {
     if (articleService.articles$.value === undefined) {
       of(undefined)
         .pipe(
-          delay(2000),
+          delay(300),
           switchMap(() => articleService.refresh())
         )
         .subscribe();
@@ -47,7 +47,7 @@ export class StockComponent {
           this.errorMsg = '';
           this.isRefreshing = true;
         }),
-        delay(3000),
+        delay(300),
         switchMap(() => this.articleService.refresh()),
         catchError((err) => {
           console.log('err: ', err);
@@ -69,7 +69,7 @@ export class StockComponent {
           this.errorMsg = '';
           this.isRemoving = true;
         }),
-        delay(3000),
+        delay(300),
         switchMap(() => {
           const ids = [...this.selectedArticles].map((a) => a.id);
           return this.articleService.remove(ids);
