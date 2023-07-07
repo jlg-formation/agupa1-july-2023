@@ -1,5 +1,14 @@
 # Gestion Stock
 
+## Prerequisites
+
+Software to install:
+
+- Chrome
+- Nodejs (wih Volta)
+- VSCode
+- Git
+
 ## Install
 
 ```
@@ -54,4 +63,16 @@ Start the backend
 cd agupa1-july-2023
 cd back
 npm run start:prod
+```
+
+## Misc
+
+```
+npx ng g m toto -m app --dry-run
+npx ng g c toto/titi --export --dry-run
+
+npx ng lint
+npx ng test
+npx ng e2e
+
 ```
