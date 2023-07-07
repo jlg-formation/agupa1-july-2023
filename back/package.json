@@ -7,7 +7,8 @@
     "start": "nodemon src/server.ts",
     "build": "tsc",
     "start:prod": "node dist/server.js",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "keywords": [],
   "author": "",
