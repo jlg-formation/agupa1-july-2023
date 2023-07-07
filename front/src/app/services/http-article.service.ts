@@ -4,7 +4,7 @@ import { Observable, map, of, switchMap } from 'rxjs';
 import { Article, NewArticle } from '../interfaces/article';
 import { ArticleService } from './article.service';
 
-export const url = 'http://localhost:3000/api/articles';
+export const url = '/api/articles';
 
 @Injectable({
   providedIn: 'root',
