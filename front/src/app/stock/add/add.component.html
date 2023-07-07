@@ -17,7 +17,10 @@
       {{ errorMsg }}
     </div>
     <button type="submit" class="primary" [disabled]="f.invalid || isAdding">
-      <fa-icon [icon]="faPlus"></fa-icon>
+      <fa-icon
+        [icon]="isAdding ? faCircleNotch : faPlus"
+        [spin]="isAdding"
+      ></fa-icon>
       <span>Ajouter</span>
     </button>
     {{ f.value | json }}
