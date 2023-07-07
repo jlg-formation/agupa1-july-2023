@@ -8,6 +8,11 @@ const articles: Article[] = [
   { id: "a2", name: "Marteau", price: 5, qty: 45 },
 ];
 
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  next();
+});
+
 app.get("/articles", (req, res) => {
   res.json(articles);
 });
